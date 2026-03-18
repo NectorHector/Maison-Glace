@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Fondateur — Maison Glacé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #fafafa;
+            --off-white: #f5f4f1;
+            --cream: #edeae4;
+            --warm-gray: #b8b4ad;
+            --mid-gray: #5a5654;
+            --dark-gray: #4a4643;
+            --charcoal: #1a1816;
+            --near-black: #1a1816;
+            --gold: #b8943e;
+            --gold-light: #d4b366;
+            --gold-dark: #917428;
+        }
+
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--charcoal);
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ─── FIXED VIDEO BACKGROUND ─── */
+        .video-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .video-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 24, 22, 0.55);
+        }
+
+        /* ─── SCROLLABLE CONTENT ─── */
+        .founder-scroll {
+            position: relative;
+            z-index: 1;
+            min-height: 100%;
+        }
+
+        .founder-spacer {
+            height: 40vh;
+        }
+
+        .founder-content {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 48px 120px;
+        }
+
+        .founder-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 32px;
+        }
+
+        .founder-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 300;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .founder-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            margin-bottom: 48px;
+        }
+
+        .founder-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 48px;
+        }
+
+        .founder-paragraph {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 2;
+            margin-bottom: 32px;
+        }
+
+        .founder-paragraph:last-of-type {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ─── RETURN BUTTON ─── */
+        .return-section {
+            padding: 80px 48px 120px;
+            text-align: center;
+        }
+
+        .return-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 48px;
+        }
+
+        .return-button {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            padding: 18px 48px;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(4px);
+            background: rgba(184, 148, 62, 0.05);
+        }
+
+        .return-button:hover {
+            background: var(--gold);
+            color: #fff;
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px rgba(184, 148, 62, 0.25);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .founder-spacer {
+                height: 25vh;
+            }
+
+            .founder-content {
+                padding: 0 24px 80px;
+            }
+
+            .return-section {
+                padding: 60px 24px 80px;
+            }
+
+            .return-button {
+                padding: 16px 36px;
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── FIXED VIDEO BACKGROUND ─── -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="founder.mp4" type="video/mp4">
+        </video>
+        <div class="video-bg-overlay"></div>
+    </div>
+
+    <!-- ─── SCROLLABLE CONTENT ─── -->
+    <div class="founder-scroll">
+        <div class="founder-spacer"></div>
+
+        <div class="founder-content">
+            <div class="founder-eyebrow">Le Fondateur</div>
+            <h1 class="founder-heading">Le Fondateur</h1>
+            <div class="founder-name">Barth&eacute;l&eacute;my-Augustin de la Rochefoucauld-Montmorency-Vaillancourt</div>
+            <div class="founder-divider"></div>
+
+            <p class="founder-paragraph">
+                Barth&eacute;l&eacute;my-Augustin de la Rochefoucauld-Montmorency-Vaillancourt does not merely exist in the world &mdash; he perceives it, in ways that most are simply not equipped to understand.
+            </p>
+            <p class="founder-paragraph">
+                Born into a sensitivity so acute it borders on the prophetic, Barth&eacute;l&eacute;my-Augustin spent his formative years quietly dismantling the boundaries between poetry, philosophy, and beauty. By thirty, he had already achieved what lesser minds might require several lifetimes to approximate.
+            </p>
+            <p class="founder-paragraph">
+                A visionary at the intersection of art, verse, and haute sensibility, Barth&eacute;l&eacute;my-Augustin founded Maison Glac&eacute; after a transcendent moment in the Swiss Alps, wherein he beheld a block of glacial ice and wept &mdash; not from sadness, but from recognition. He saw in that crystalline form everything the modern world had forgotten: purity, impermanence, and the devastating poetry of cold.
+            </p>
+            <p class="founder-paragraph">
+                Maison Glac&eacute; is not a company. It is a conversation &mdash; one that few are yet prepared to have.
+            </p>
+            <p class="founder-paragraph">
+                His poetry and philosophy have been described by those who truly grasp them as &ldquo;years ahead of their time,&rdquo; and by those who do not as &ldquo;confusing,&rdquo; which Barth&eacute;l&eacute;my-Augustin accepts with characteristic grace.
+            </p>
+            <p class="founder-paragraph">
+                He divides his time between Paris, a remote Japanese island, and an undisclosed mountainside, where he thinks deeply, suffers beautifully, and continues his lifelong pursuit of the question no one else has thought to ask.
+            </p>
+            <p class="founder-paragraph">
+                He is, above all, unrepeatable.
+            </p>
+        </div>
+
+        <div class="return-section">
+            <div class="return-divider"></div>
+            <a href="index.html" class="return-button">Return to Maison Glac&eacute;</a>
+        </div>
+    </div>
+
+</body>
+</html>
