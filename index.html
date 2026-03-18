@@ -1388,17 +1388,15 @@
         // video scrubbing starts when each video loads
         // ═══════════════════════════════════════
         function init() {
-            // Video scrubbing — extract hero frames first, then dismiss loader
+            // Video scrubbing — extract frames then bind canvas to scroll
             const heroReady = initVideoCanvas(heroVideo, heroCanvas, '#heroSection');
+            const secondReady = initVideoCanvas(secondVideo, secondCanvas, '#secondSection');
 
-            // Dismiss loading screen once hero video is ready (second loads in background)
-            heroReady.then(() => {
+            // Dismiss loading screen once both videos are fully extracted
+            Promise.all([heroReady, secondReady]).then(() => {
                 const loader = document.getElementById('loadingScreen');
                 loader.classList.add('fade-out');
                 setTimeout(() => loader.remove(), 800);
-
-                // Extract second video frames in background after loader is dismissed
-                initVideoCanvas(secondVideo, secondCanvas, '#secondSection');
             });
 
             // ═══════════════════════════════════════
